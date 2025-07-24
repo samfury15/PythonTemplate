@@ -17,11 +17,11 @@ class TrainingConfig:
     """Configuration class for training parameters."""
     batch_size: int = 10
     learning_rate: float = 0.001
-    num_epochs: int = 10
+    num_epochs: int = 50
     hidden_size: int = 16
     input_size: int = 10
     num_classes: int = 2
-    early_stopping_patience: int = 3
+    early_stopping_patience: int = 15
     validation_split: float = 0.2
 
 class SmallModel(nn.Module):
@@ -154,7 +154,7 @@ def train_model(config: TrainingConfig) -> Dict[str, List[float]]:
             train_total += targets.size(0)
             train_correct += (predicted == targets).sum().item()
             
-            if batch_idx % 5 == 0:  # Log every 5 batches
+            if batch_idx % 2 == 0:  # Log every 5 batches
                 logger.info(f"Epoch {epoch+1}/{config.num_epochs}, "
                           f"Batch {batch_idx+1}/{len(train_loader)}, "
                           f"Loss: {loss.item():.4f}")
