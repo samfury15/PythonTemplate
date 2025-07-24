@@ -1,9 +1,13 @@
 import argparse
 
-def add(x, y): return x + y
-def sub(x, y): return x - y
-def mul(x, y): return x * y
-def div(x, y): return x / y if y != 0 else "Error: Division by zero"
+def add(x, y): 
+    return x + y
+def sub(x, y): 
+    return x - y
+def mul(x, y): 
+    return x * y
+def div(x, y): 
+    return x / y if y != 0 else "Error: Division by zero"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Simple CLI Calculator")
